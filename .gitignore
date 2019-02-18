@@ -1,0 +1,6 @@
+#Compiled Python Files
+*.pyc
+
+#Frontend Build 
+node_modules/
+
