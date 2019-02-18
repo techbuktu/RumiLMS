@@ -14,7 +14,10 @@ const routes: Routes = [
 	   path: '',
            component: HomeComponent
 	},
-
+	{
+		path: 'classes',
+		component: ClassListComponent
+	},
 	{
 	   path: 'students',
 	   component: StudentListComponent
