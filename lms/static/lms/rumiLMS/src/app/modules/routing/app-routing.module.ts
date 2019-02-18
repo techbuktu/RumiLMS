@@ -27,6 +27,10 @@ const routes: Routes = [
 	   path: 'students/:studentUrl',
 	   component: StudentComponent
 	},
+	{
+		path: 'classes/:classUrl',
+		component: ClassComponent
+	},
 
 ];
 
