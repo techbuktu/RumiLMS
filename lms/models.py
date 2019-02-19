@@ -9,6 +9,7 @@ class Student(models.Model):
     first_name = models.CharField(max_length=100, verbose_name="First Name")
     last_name = models.CharField(max_length=100, verbose_name="Last Name")
     link = models.SlugField(max_length=115, blank=True)
+    classes = models.ManyToManyField("Class", related_name="students")
 
     class Meta:
         ordering = ['id']
