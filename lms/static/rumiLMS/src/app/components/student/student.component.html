@@ -1,3 +1,12 @@
-<p>
-  student works!
-</p>
+<h3>
+  {{ student.first_name }} {{ student.last_name }}
+</h3>
+
+<h4>
+  Classes Enrolled In this Semester
+</h4>
+<ul>
+  <li *ngFor="let class of class_list">
+    {{ class.name }}
+  </li>
+</ul>
