@@ -3,6 +3,9 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
+    return render(request, 'lms/static/lms/rumiLMS/src/index.html')
+
+def index(request):
     """
     Placeholder home page.
     """
