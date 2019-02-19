@@ -1,8 +1,15 @@
 <h3>
   Currently Enrolled Students
 </h3>
-
 <p>
   Please, click on a student to get more information about them and 
   the classes the are registered for this semsester.
 </p>
+
+<ul>
+  <li *ngFor="let student of student_list">
+    <a [routerLink]="['/students', student.link]">
+      {{ student.first_name }} {{ student.last_name }}
+    </a>
+  </li>
+</ul>

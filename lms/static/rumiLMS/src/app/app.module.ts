@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './modules/routing/app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,10 @@ import { StudentListComponent } from './components/student-list/student-list.com
 import { StudentComponent } from './components/student/student.component';
 import { ClassListComponent } from './components/class-list/class-list.component';
 import { ClassComponent } from './components/class/class.component';
+
+//Import app's API Services
+import { StudentApiService } from './services/student/student-api.service';
+import { ClassApiService } from './services/class/class-api.service';
 
 @NgModule({
   declarations: [
@@ -20,9 +25,13 @@ import { ClassComponent } from './components/class/class.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    StudentApiService,
+    ClassApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
