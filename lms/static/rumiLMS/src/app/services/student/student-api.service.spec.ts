@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LocalStorageService } from './local-storage.service';
+import { StudentApiService } from './student-api.service';
 
-describe('LocalStorageService', () => {
+describe('StudentApiService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: LocalStorageService = TestBed.get(LocalStorageService);
+    const service: StudentApiService = TestBed.get(StudentApiService);
     expect(service).toBeTruthy();
   });
 });

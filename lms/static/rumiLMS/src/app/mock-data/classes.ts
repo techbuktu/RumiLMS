@@ -5,7 +5,7 @@ export const CLASS_LIST = [
     desc: 'This class takes the student on a tour of the Python programming language and its intricate details',
  },
  {
-    id : 2
+    id : 2,
     name: 'JavaScript',
     desc: 'This class is an indepth coverage of JavaScript for both backend and frontend development',
  },
