@@ -18,8 +18,8 @@ from django.urls import path, include
 from lms.api.views import lms_api_root 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', lms_api_root, name='api_root'),
-    path('api-auth/', include('rest_framework.urls', namespace='lms_api')),
+    path('api/', include('lms.api.urls', namespace='lms_api')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', include('lms.urls', namespace='lms')),
 
 ]

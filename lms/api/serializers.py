@@ -28,4 +28,4 @@ class ClassSerializer(serializers.HyperlinkedModelSerializer):
     )
     class Meta:
         model = Class 
-        fields = ('name', 'desc','link')
+        fields = ('name', 'desc','link','students')

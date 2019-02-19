@@ -5,6 +5,7 @@ from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from lms.api import views 
 
+app_name = 'lms_api'
 urlpatterns = format_suffix_patterns(
     [
         path('students/', views.StudentListView.as_view(), name='student_list'),
