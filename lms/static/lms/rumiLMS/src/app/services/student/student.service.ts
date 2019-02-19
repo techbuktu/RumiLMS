@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 
 export class StudentService {
   
-constructor(private localStorage: window.localStorage) { 
+constructor(private localStorage: Window.localStorage) { 
 	
 }
 
