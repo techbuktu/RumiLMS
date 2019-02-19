@@ -6,10 +6,16 @@ from rest_framework.reverse import reverse
 from rest_framework.response import Response 
 from rest_framework.decorators import api_view 
 
-#@api_view(['GET'])
-def lms_api_root():
-    return "This is the API root with docs and links to main endpoints."
-
+@api_view(['GET'])
+def lms_api_root(request, format=None):
+    """
+    Collects all other API endpoints and serves as the root/"landing page"
+    of all the RumiLMS API.
+    """
+    return Response({
+        'students': reverse('lms_api:student_list', request=request, format=format),
+        'classes': reverse('lms_api:class_list', request=request, format=format)
+    })
 
 class StudentListView(generics.ListCreateAPIView):
     """
