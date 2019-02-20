@@ -11,5 +11,10 @@
     <a [routerLink]="['/students', student.link]">
       {{ student.first_name }} {{ student.last_name }}
     </a>
+    <button (click)="deleteStudent(student)">X</button>
   </li>
 </ul>
+
+<p>
+  Do you have a student you want to add? Kindly <a [routerLink]="['/students/new-student']">use this form.</a>
+</p>
