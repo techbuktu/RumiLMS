@@ -1,12 +1,39 @@
 <h3>
-  {{ student.first_name }} {{ student.last_name }}
+  {{ student.first_name|uppercase }} {{ student.last_name }}
 </h3>
 
 <h4>
   Classes Enrolled In this Semester
 </h4>
-<ul>
-  <li *ngFor="let class of class_list">
-    {{ class.name }}
+<button (click)="getClassesforStudent()">Show Classes</button>
+<ul *ngIf="student_class_list">
+  <li *ngFor="let class of student_class_list">
+   {{ class.name }}
   </li>
 </ul>
+
+<h4>Class Names </h4>
+<ul *ngIf="class_names">
+  <li *ngFor="let name of class_names">
+    {{ name }}
+  </li>
+
+</ul>
+
+Class URLs
+<ul>
+  <li *ngFor="let url of UrlsforClasses" (click)="getClassData(url)">
+    {{ url }}
+  </li>
+</ul>
+
+<div *ngIf="class_data">
+  <h4>
+    {{ class_data.name }}
+  </h4>
+  <p>
+    {{ class_data.desc }}
+  </p>
+
+  <a [routerLink]="['/classes', class_data.link]">More About this Class</a>.
+</div>

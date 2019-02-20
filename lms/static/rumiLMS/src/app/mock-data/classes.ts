@@ -1,6 +1,6 @@
 export const CLASS_LIST = [
 {
-    id : 1
+    id : 1,
     name: 'Python',
     desc: 'This class takes the student on a tour of the Python programming language and its intricate details',
  },

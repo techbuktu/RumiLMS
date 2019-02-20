@@ -15,19 +15,23 @@ export class StudentApiService {
     return this.Http.get(this.ApiUrl);
   }
 
-  getStudentbyUrl(student_url){
+  getStudentbyUrl(student_url:string){
     return this.Http.get(this.ApiUrl + student_url);
   }
+
+  getStudentbyFullUrl(full_url:string){
+    return this.Http.get(full_url);
+  }
   
-  addStudent(student_data) {
+  addStudent(student_data:any) {
     return this.Http.post(this.ApiUrl, student_data);
   }
 
-  updateStudent(student_url, updated_student_data){
+  updateStudent(student_url:string, updated_student_data:any){
     return this.Http.put(this.ApiUrl + student_url, updated_student_data);
   }
 
-  deleteStudent(student_url){
+  deleteStudent(student_url:string){
     return this.Http.delete(this.ApiUrl + student_url);
   }
 

@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ClassApiService {
-  ApiUrl:string = 'http://localhost:8000/api/classes';
+  ApiUrl:string = 'http://localhost:8000/api/classes/';
 
   constructor( private Http: HttpClient) { }
 
@@ -15,6 +15,10 @@ export class ClassApiService {
 
   getClassbyUrl(class_url){
     return this.Http.get(this.ApiUrl + class_url);
+  }
+
+  getClassbyFullUrl(full_url:string){
+    return this.Http.get(full_url);
   }
 
   addNewClass(class_data){
