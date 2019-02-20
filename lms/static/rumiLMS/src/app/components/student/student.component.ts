@@ -4,7 +4,6 @@ import { ClassApiService } from '../../services/class/class-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -121,6 +120,10 @@ export class StudentComponent implements OnInit {
       },
       () => {}
     )
+  }
+
+  goToStudentsHomePage(): void{
+    this.router.navigate(['/students']);
   }
 
 

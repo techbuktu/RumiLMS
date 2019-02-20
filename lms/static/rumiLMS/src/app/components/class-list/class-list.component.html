@@ -1,3 +1,17 @@
+<h2>
+  Available Classes
+</h2>
 <p>
-  class-list works!
+  Please, select a class below to view details about it.
 </p>
+<p>
+  To add a new class, <a [routerLink]="['/classes/new-class']">use this form</a>.
+</p>
+<ul *ngIf="class_list">
+  <li *ngFor="let class of class_list">
+    <a [routerLink]="['/classes', class.link]">
+      {{ class.name }}
+    </a>
+    <button (click)="deleteClass(class)">X</button>
+  </li>
+</ul>
