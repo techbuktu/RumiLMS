@@ -5,21 +5,29 @@
 <h4>
   Classes Enrolled In this Semester
 </h4>
-<button (click)="getClassesforStudent()">Show Classes</button>
-<ul *ngIf="student_class_list">
-  <li *ngFor="let class of student_class_list">
-   {{ class.name }}
-  </li>
-</ul>
 
-<h4>Class Names </h4>
-<ul *ngIf="class_names">
-  <li *ngFor="let name of class_names">
-    {{ name }}
-  </li>
+<div *ngIf="UrlsforClasses">
+    <!-->button (click)="getClassesforStudent()">Show Classes Data</button-->
+  <h4> Classes Data</h4>
+  <ul *ngIf="student_class_list">
+      <li *ngFor="let class of student_class_list">
+        <a [routerLink]="['/classes', class.link]">
+            {{ class.name }}
+        </a>
+      </li>
+  </ul>
+</div>
 
-</ul>
+<div *ngIf="UrlsforClasses">
+    <button (click)="getClassNames()">Show Classes</button>
+    <h4>Class Names </h4>
+    <ul *ngIf="class_names">
+      <li *ngFor="let name of class_names">
+        {{ name }}
+      </li>
+    </ul>
 
+</div>
 Class URLs
 <ul>
   <li *ngFor="let url of UrlsforClasses" (click)="getClassData(url)">

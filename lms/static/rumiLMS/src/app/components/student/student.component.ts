@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentApiService } from '../../services/student/student-api.service';
 import { ClassApiService } from '../../services/class/class-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+
 
 
 @Component({
@@ -17,7 +17,7 @@ export class StudentComponent implements OnInit {
   student:any;
   UrlsforClasses:[];
   class_names:Array<string>;
-  student_class_list:any[];
+  student_class_list:Object[];
   classes_error_message:string;
   class_data:any;
   constructor(private studentService:StudentApiService, private classService: ClassApiService, private router:Router, private route: ActivatedRoute) { 
@@ -49,6 +49,17 @@ export class StudentComponent implements OnInit {
     )
   }
 
+  getClassNames(){
+    const class_names: Array<string> = [];
+    this.UrlsforClasses.forEach(url => {
+      const url_parts = url.split('/');
+      const class_name = url_parts[5];
+      class_names.push(class_name);
+    });
+    this.class_names = class_names;
+    console.log("Class Names: ", this.class_names);
+  }
+
   getStudentData(){
     this.studentService.getStudentbyUrl(this.studentUrl).subscribe(
       data => {
@@ -58,13 +69,7 @@ export class StudentComponent implements OnInit {
         
         this.UrlsforClasses = this.student.classes;
         console.log("Class URLs are: ", this.UrlsforClasses);
-        this.UrlsforClasses.forEach(url => {
-          const url_parts = url.split('/');
-          const class_name = url_parts[5];
-          this.class_names.push(class_name);
-        })
-        console.log(this.class_names);
-        
+        this.getClassesforStudent();
       },
       err => {},
       () => { }
@@ -85,21 +90,23 @@ export class StudentComponent implements OnInit {
   }
 
   getClassesforStudent(){
+    const classes: any[] = [];
     return this.UrlsforClasses.forEach(url => {
       //this.getClassByFullUrl(url);
       this.classService.getClassbyFullUrl(url).subscribe(
         data => {
-          this.student_class_list.push(data);
+          classes.push(data);
+        console.log("Classes Data so far:", classes);
         },
         err => {
           this.classes_error_message = "Sorry, no classes found for this student.";
         },
         () => {}
       )
-      console.log('Current Classes: ', this.student_class_list);
+      console.log('Current Classes: ', classes);
+      this.student_class_list = classes;
+
     })
-    console.log("Class List: ", this.student_class_list);
-    
   }
 
   
