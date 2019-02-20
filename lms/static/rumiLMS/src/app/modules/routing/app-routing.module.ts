@@ -8,6 +8,8 @@ import { StudentListComponent } from '../../components/student-list/student-list
 import { StudentComponent } from '../../components/student/student.component';
 import { ClassListComponent } from '../../components/class-list/class-list.component';
 import { ClassComponent } from '../../components/class/class.component';
+import { NewStudentComponent } from '../../components/new-student/new-student.component';
+import { NewClassComponent } from '../../components/new-class/new-class.component';
 
 const routes: Routes = [
 	{
@@ -23,6 +25,15 @@ const routes: Routes = [
 	   component: StudentListComponent
 	 },
 
+	 {
+		 path: 'students/new-student',
+		 component: NewStudentComponent
+	 },
+
+	 {
+		 path: 'classes/new-class',
+		 component: NewClassComponent
+	 },
 	{
 	   path: 'students/:studentUrl',
 	   component: StudentComponent

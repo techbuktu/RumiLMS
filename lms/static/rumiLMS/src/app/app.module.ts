@@ -13,6 +13,8 @@ import { ClassComponent } from './components/class/class.component';
 //Import app's API Services
 import { StudentApiService } from './services/student/student-api.service';
 import { ClassApiService } from './services/class/class-api.service';
+import { NewStudentComponent } from './components/new-student/new-student.component';
+import { NewClassComponent } from './components/new-class/new-class.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ClassApiService } from './services/class/class-api.service';
     StudentListComponent,
     StudentComponent,
     ClassListComponent,
-    ClassComponent
+    ClassComponent,
+    NewStudentComponent,
+    NewClassComponent
   ],
   imports: [
     BrowserModule,
