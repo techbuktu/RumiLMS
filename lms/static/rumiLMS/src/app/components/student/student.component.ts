@@ -122,6 +122,12 @@ export class StudentComponent implements OnInit {
     )
   }
 
+  updateStudent(){
+    //1: Update Student  Data
+    //2: PUT updated_student to API
+    //3: Fetch and reload updated_student data to component class and UI
+  }
+
   goToStudentsHomePage(): void{
     this.router.navigate(['/students']);
   }

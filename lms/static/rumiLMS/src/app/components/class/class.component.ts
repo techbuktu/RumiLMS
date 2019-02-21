@@ -66,7 +66,12 @@ getStudentsinClass(){
   })
 
   this.students_in_class = students;
-  
+}
+
+updateClass(){
+  //1: Update Class Data
+  //2: PUT updated_class to API
+  //3: Fetch and reload updated_class data
 }
 
 
