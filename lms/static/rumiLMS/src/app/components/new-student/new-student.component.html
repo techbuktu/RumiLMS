@@ -5,9 +5,55 @@
   Please, use the form below to add a new student to the LMS.
 </p>
 
+
 <div>
-  <form action="">
+ <form [formGroup]="newStudentForm" (ngSubmit)="onSubmit()">
+  <h4 *ngIf="form_is_valid">
+    Your form is valid. 
+  </h4>
 
-  </form>
+  <label>
+    First Name: 
+    <input type="text" formControlName="first_name">
+    <div *ngIf="is_submitted && newStudentForm.controls.first_name.errors" class="form_error">
+      <div *ngIf="newStudentForm.controls.first_name.errors.required">
+        Student's First Name is required.
+      </div>
+    </div>
+  </label>
 
+  <label>
+    Last Name: 
+    <input type="text" formControlName="last_name">
+    <div *ngIf="is_submitted && newStudentForm.controls.last_name.errors" class="form_error">
+      <div *ngIf="newStudentForm.controls.last_name.errors.required">
+        Student's Last Name is required.
+      </div>
+    </div>
+  </label>
+
+  <input type="submit" value="Add Student" [disabled]="!newStudentForm.valid">
+
+ </form>
+</div>
+
+<div>
+  <p *ngIf="api_post_fail_message">
+      {{ api_post_fail_message }}
+  </p>
+</div>
+
+<div *ngIf="is_submitted">
+  <b> First Name:</b> {{ newStudentForm.controls.first_name.value }}
+
+  <b> Last Name:</b> {{ newStudentForm.controls.last_name.value }}
+</div>
+
+<div *ngIf="api_post_successful">
+    <p>
+      This new student was succesfully added to you list of students.
+    </p>
+    <p>
+      <button (click)="viewAllStudents()"> View All Students</button>
+    </p>
 </div>
