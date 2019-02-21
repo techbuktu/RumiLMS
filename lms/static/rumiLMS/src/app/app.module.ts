@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule} from '@angular/forms';
-
 import { AppRoutingModule } from './modules/routing/app-routing.module';
+import { HttpInterceptorsModule } from './modules/http-interceptors/http-interceptors.module';
+
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { StudentListComponent } from './components/student-list/student-list.component';
@@ -32,7 +34,8 @@ import { NewClassComponent } from './components/new-class/new-class.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpInterceptorsModule
   ],
   providers: [
     StudentApiService,
