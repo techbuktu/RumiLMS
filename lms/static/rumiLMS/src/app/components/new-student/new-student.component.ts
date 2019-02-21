@@ -13,7 +13,7 @@ export class NewStudentComponent implements OnInit {
   
   //Initialize form-related Objects here
   newStudentForm: FormGroup;
-  newStudent: Object;
+  newStudent;
   is_submitted:boolean = false;
   api_post_successfull:boolean = false;
   api_post_fail_message:string;
@@ -38,13 +38,18 @@ export class NewStudentComponent implements OnInit {
     if (this.newStudentForm.invalid){
       return;
     }
-    const newStudent = {
-      first_name: this.newStudentForm.first_name,
-      last_name: this.newStudentForm.last_name
+     this.newStudent = {
+      first_name: this.newStudentForm.controls.first_name.value,
+      last_name: this.newStudentForm.controls.last_name.value
     }
-    console.log(newStudent);
 
-    this.studentService.addStudent(newStudent)
+    console.log("this.newStudent: ", this.newStudent);
+
+    this.addNewStudent();
+  }
+
+  addNewStudent(){
+    this.studentService.addStudent(JSON.stringify(this.newStudent))
     .subscribe(
       res => {
         this.form_is_valid = true;
@@ -59,8 +64,6 @@ export class NewStudentComponent implements OnInit {
         console.log("studentService.addNewStudent() finished running.");
       }
     )
-
-
   }
 
   viewAllStudents():void{
