@@ -43,7 +43,7 @@ export class NewStudentComponent implements OnInit {
       last_name: this.newStudentForm.controls.last_name.value
     }
 
-    console.log("this.newStudent: ", this.newStudent);
+    console.log("JSON.stringify(this.newStudent): ", JSON.stringify(this.newStudent));
 
     this.addNewStudent();
   }
