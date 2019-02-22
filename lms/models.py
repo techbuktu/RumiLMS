@@ -8,7 +8,7 @@ class Student(models.Model):
     """
     first_name = models.CharField(max_length=100, verbose_name="First Name")
     last_name = models.CharField(max_length=100, verbose_name="Last Name")
-    link = models.SlugField(max_length=115, blank=True)
+    link = models.SlugField(max_length=115, blank=True, unique=True)
     classes = models.ManyToManyField("Class", related_name="students")
 
     class Meta:
@@ -29,7 +29,7 @@ class Class(models.Model):
     """
     name = models.CharField(max_length=100)
     desc = models.TextField(verbose_name="Description")
-    link = models.SlugField(max_length=115, blank=True)
+    link = models.SlugField(max_length=115, blank=True, unique=True)
 
     class Meta:
         verbose_name_plural = "Classes"
