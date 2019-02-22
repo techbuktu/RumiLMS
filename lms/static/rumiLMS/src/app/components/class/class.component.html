@@ -24,3 +24,12 @@
 <button (click)="gotoClassesHomePage()">
     All Classes
 </button>
+
+<div>
+    <p *ngIf="classUrl">
+        <button (click)="deleteClass()">Remove this Class from Syllabus</button>
+      </p>
+  <p *ngIf="class_delete_error_message">
+    {{ class_delete_error_message }}
+  </p>      
+</div>

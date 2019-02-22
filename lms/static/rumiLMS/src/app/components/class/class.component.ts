@@ -17,6 +17,8 @@ export class ClassComponent implements OnInit {
   student_list_error_message:string;
   class_update_error_message:string;
   class_update_success_message:string;
+  class_delete_success_message: string;
+  class_delete_error_message:string;
   UrlsforStudents: string[];
 
   constructor(private classService:ClassApiService, private studentService:StudentApiService, private router: Router, private route:ActivatedRoute) {
@@ -72,6 +74,20 @@ updateClass(){
   //1: Update Class Data
   //2: PUT updated_class to API
   //3: Fetch and reload updated_class data
+}
+
+deleteClass(){
+  this.classService.deleteClass(this.classUrl)
+  .subscribe(
+    res => {
+      this.class_delete_success_message = "This class was successfully-deleted from yur syllabus.";
+      this.router.navigate(['/classes']);
+    },
+    err => {
+      this.class_delete_error_message = "Something went wrong. This class could not be deleted. Please, try agian later.";
+    },
+    () => {}
+  )
 }
 
 
