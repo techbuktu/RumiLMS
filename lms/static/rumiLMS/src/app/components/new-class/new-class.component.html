@@ -1,3 +1,59 @@
+<h3>
+  Create a New Class
+</h3>
+
 <p>
-  new-class works!
+  Please use the form below to add a new Class to your syllabus.
 </p>
+
+<div>
+
+  <form [formGroup]="newClassForm" (ngSubmit)="onSubmit()">
+    <h5 *ngIf="form_is_valid"> Your form data is valid</h5>
+
+  <label>
+    Class Name: 
+    <input type="text" formControlName="name">
+    <div *ngIf="is_submitted && newClassForm.controls.name.errors" class="form_error">
+      <div *ngIf="newClassForm.controls.name.errors.required">
+        The name of the class is required. Please, enter a name for this new class.
+      </div>
+    </div>
+  </label>
+
+  <label>
+    Class Description:
+    <textarea formControlName="desc" cols="30" rows="10"> </textarea>
+    <div *ngIf="is_submitted && newClassForm.controls.desc.errors" class="form_error">
+      <div *ngIf="newClassForm.controls.desc.errors.required">
+        Required. Please, add a description for this new class.
+      </div>
+
+    </div>
+  </label>
+
+  <input type="submit" value="Create New Class" [disabled]="!newClassForm.valid">
+  </form>
+
+</div>
+
+<p *ngIf="api_post_fail_message">
+    {{ api_post_fail_message }}
+</p>
+
+<div *ngIf="is_submitted">
+    <b> Class Name:</b> {{ newClassForm.controls.name.value }}
+  
+    <b> Description:</b> {{ newClassForm.controls.desc.value }}
+  </div>
+  
+  <div *ngIf="api_post_successful">
+      <p>
+        You have successfully add a new class to your syllabus.
+      </p>
+      <p>
+        <a [routerLink]="['/classes']">
+          Current Classes 
+        </a>
+      </p>
+  </div>

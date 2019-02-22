@@ -19,7 +19,7 @@ export class NewClassComponent implements OnInit {
   api_post_fail_message: string;
   form_is_valid: boolean =false;
 
-  constructor(private formBuilder: FormBuider, private router: Router, private classService: ClassApiService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private classService: ClassApiService) { }
 
   ngOnInit() {
     //Create a new Class object mapping it to the API Class object's fields 
@@ -47,14 +47,13 @@ export class NewClassComponent implements OnInit {
     }
 
     this.createNewClass();
-
   }
 
   createNewClass(){
     this.classService.addNewClass(this.newClassData)
     .subscribe(
       data => {
-        this.api_post_sucessful = true;
+        this.api_post_successful = true;
         this.form_is_valid = true;
         this.router.navigate(['/classes']);
       },
@@ -64,6 +63,7 @@ export class NewClassComponent implements OnInit {
       },
       () => { }
     )
+    
   }
 
 }
