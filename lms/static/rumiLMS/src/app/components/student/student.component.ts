@@ -18,6 +18,8 @@ export class StudentComponent implements OnInit {
   class_names:Array<string>;
   student_class_list:Object[];
   classes_error_message:string;
+  student_delete_error_message: string;
+  student_delete_success_message: string;
   class_data:any;
   constructor(private studentService:StudentApiService, private classService: ClassApiService, private router:Router, private route: ActivatedRoute) { 
     this.route.params.subscribe(
@@ -126,6 +128,20 @@ export class StudentComponent implements OnInit {
     //1: Update Student  Data
     //2: PUT updated_student to API
     //3: Fetch and reload updated_student data to component class and UI
+  }
+
+  deleteStudent(){
+    this.studentService.deleteStudent(this.student.link)
+    .subscribe(
+      res => {
+        this.student_delete_success_message = "This student was successfully removed from the LMS.";
+        this.router.navigate(['/students']);
+      },
+      err => {
+        this.student_delete_error_message = "This student could not beremoved. Please, check and try again later.";
+      },
+      () => {}
+    )
   }
 
   goToStudentsHomePage(): void{

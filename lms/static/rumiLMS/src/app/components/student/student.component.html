@@ -33,3 +33,7 @@
 <button (click)="goToStudentsHomePage()">
   Students Home
 </button>
+
+<p *ngIf="student">
+  <button on-click="deleteStudent()">Delete this Student</button>
+</p>
