@@ -40,7 +40,8 @@ export class NewStudentComponent implements OnInit {
     }
      this.newStudent = {
       first_name: this.newStudentForm.controls.first_name.value,
-      last_name: this.newStudentForm.controls.last_name.value
+      last_name: this.newStudentForm.controls.last_name.value,
+      classes: []
     }
 
     console.log("JSON.stringify(this.newStudent): ", JSON.stringify(this.newStudent));
@@ -58,6 +59,7 @@ export class NewStudentComponent implements OnInit {
       },
       err => {
         this.api_post_successfull = false;
+        console.log("Error message: ", err);
         this.api_post_fail_message = "Sorry, this student could not be added. Please, try again later.";
       },
       () => {

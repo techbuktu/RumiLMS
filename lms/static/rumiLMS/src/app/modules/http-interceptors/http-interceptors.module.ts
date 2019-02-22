@@ -9,6 +9,9 @@ import { HttpContentTypeHeaderInterceptor } from './http-contenttype-interceptor
   imports: [
     CommonModule
   ],
+  exports: [
+    
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS, useClass: HttpContentTypeHeaderInterceptor, multi:true

@@ -23,7 +23,7 @@ export class StudentApiService {
     return this.Http.get(full_url);
   }
   
-  addStudent(student_data:any) {
+  addStudent(student_data) {
     return this.Http.post(this.ApiUrl, student_data);
   }
 

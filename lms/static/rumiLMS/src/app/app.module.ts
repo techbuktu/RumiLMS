@@ -19,6 +19,8 @@ import { ClassApiService } from './services/class/class-api.service';
 import { NewStudentComponent } from './components/new-student/new-student.component';
 import { NewClassComponent } from './components/new-class/new-class.component';
 
+//import { HttpInterceptorProviders } from './modules/http-interceptors/index';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +40,7 @@ import { NewClassComponent } from './components/new-class/new-class.component';
     HttpInterceptorsModule
   ],
   providers: [
+    //HttpInterceptorProviders,
     StudentApiService,
     ClassApiService
   ],
