@@ -67,10 +67,15 @@ export class StudentComponent implements OnInit {
   }
 
   getClassNames(){
-    const class_names: Array<string> = [];
+    let class_names: Array<string> = [];
+    let url_parts: any;
+    let class_name:string;
+    let urlString:string;
+
     this.UrlsforClasses.forEach(url => {
-      const url_parts = url.split('/');
-      const class_name = url_parts[5];
+      urlString = url;
+      url_parts = urlString.split('/');
+      class_name = url_parts[5];
       class_names.push(class_name);
     });
     this.class_names = class_names;
@@ -153,19 +158,18 @@ export class StudentComponent implements OnInit {
 
     //1: Update Student  Data
     if (this.updateStudentForm.controls.first_name.dirty) {
-      //this.updatedStudent.first_name = this.updateStudentForm.controls.first_name.value
       first_name = this.updateStudentForm.controls.first_name.value;
     }
+
     else {
-      //this.updatedStudent.first_name = this.student.first_name
       first_name = this.student.first_name;
     }
+
     if (this.updateStudentForm.controls.last_name.dirty) {
-      //this.updatedStudent.last_name = this.updateStudentForm.controls.last_name.value
       last_name = this.updateStudentForm.controls.last_name.value;
     }
+
     else{
-      //this.updatedStudent.last_name = this.student.last_name
       last_name = this.student.last_name;
     }
 
@@ -191,7 +195,7 @@ export class StudentComponent implements OnInit {
 
       },
       () => {
-        console.log("studentService.updateStudent() done running.");
+        this.router.navigate(['/students', this.studentUrl]);
       }
     )
     //3: Fetch and reload updated_student data to component class and UI

@@ -21,12 +21,14 @@
 
 </div>
 
-<button (click)="gotoClassesHomePage()">
-    All Classes
-</button>
-<button *ngIf="student" (click)="openUpdateForm()">
-  Update Class Details
-</button>
+<p>
+    <button (click)="gotoClassesHomePage()">
+        All Classes
+    </button>
+    <button (click)="openUpdateForm()">
+      Update Class Details
+    </button>    
+</p>
 
 <div *ngIf="show_update_form">
 <h4> Update Class Details </h4>

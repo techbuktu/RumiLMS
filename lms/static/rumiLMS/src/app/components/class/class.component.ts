@@ -12,7 +12,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class ClassComponent implements OnInit {
 
   classUrl:string;
-  class_data:Object;
+  class_data:any;
   get_class_error_message:string;
   students_in_class: Object[];
   student_list_error_message:string;
@@ -93,8 +93,46 @@ openUpdateForm(){
 updateClassDetails(){
   this.form_is_submitted = true;
 
+  let name:string;
+  let desc: string;
+
   //1: Update Class Data
+  if(this.updateClassForm.controls.name.dirty){
+    name = this.updateClassForm.controls.name.value
+  }
+
+  else{
+    name = this.class_data.name
+  }
+
+  if(this.updateClassForm.controls.desc.dirty){
+    desc = this.updateClassForm.controls.desc.value;
+  }
+  else{
+    desc = this.class_data.desc;
+  }
+
+  //Build this.updatedClass from initial this.class_data and/or with any new values from this.updateClassForm
+  this.updatedClass = {
+    name: name,
+    desc: desc,
+    link: this.class_data.link,
+    students: this.class_data.students
+  };
   //2: PUT updated_class to API
+  this.classService.updateClass(this.classUrl, this.updatedClass)
+  .subscribe(
+    res => {
+      this.class_update_api_successful = true;
+      this.class_update_success_message = "Congrats, maestro! You have successfully updated the details about this class";
+    },
+    err => {
+      this.class_update_error_message = "Sorry, something went wrong. Please, try again later.";
+    },
+    () => {
+     
+    }
+  )
   //3: Fetch and reload updated_class data
 }
 

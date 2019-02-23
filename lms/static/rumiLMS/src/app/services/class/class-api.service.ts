@@ -26,7 +26,7 @@ export class ClassApiService {
   }
 
   updateClass(class_url, updated_class_data){
-    return this.Http.put(this.ApiUrl + class_url, updated_class_data);
+    return this.Http.put(this.ApiUrl + class_url + '/', updated_class_data);
   }
 
   deleteClass(class_url){
