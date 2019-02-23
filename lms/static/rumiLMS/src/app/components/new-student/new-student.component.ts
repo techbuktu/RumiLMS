@@ -28,13 +28,12 @@ export class NewStudentComponent implements OnInit {
       last_name: ['', Validators.required],
       //Student.link serves as the "primary key" field to call the API endpoints
       // and is always automatically-set in the backend, so, it is left out here.
-
-    })
+    });
   }
 
   onSubmit(){
     this.is_submitted = true;
-
+    
     if (this.newStudentForm.invalid){
       return;
     }

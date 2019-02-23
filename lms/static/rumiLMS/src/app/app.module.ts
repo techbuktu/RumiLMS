@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './modules/routing/app-routing.module';
 import { HttpInterceptorsModule } from './modules/http-interceptors/http-interceptors.module';
 
@@ -37,7 +37,8 @@ import { NewClassComponent } from './components/new-class/new-class.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    HttpInterceptorsModule
+    HttpInterceptorsModule,
+    FormsModule
   ],
   providers: [
     //HttpInterceptorProviders,

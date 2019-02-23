@@ -30,6 +30,18 @@
   <a [routerLink]="['/classes', class_data.link]">More About this Class</a>.
 </div>
 
+<a *ngIf="student" href="#update-student">Update Student Info</a>
+<div id="update-student">
+  <form (submit)="updateStudent()">
+    <label>First Name
+        <input type="text" [name]="student.first_name" > {{ student.first_name }}
+
+    </label>
+    
+    <input type="submit" value="Update Student Info">
+  </form>
+</div>
+
 <button (click)="goToStudentsHomePage()">
   Students Home
 </button>

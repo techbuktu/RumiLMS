@@ -25,6 +25,17 @@
     All Classes
 </button>
 
+<a *ngIf="student" href="#update-class">Update Class Details</a>
+<div>
+  <form (ngSubmit)="updateClass()">
+    <label>Name:
+        <input type="text" [name]="class_data.name" > {{ class_data.name }}
+
+    </label>
+    
+  </form>
+</div>
+
 <div>
     <p *ngIf="classUrl">
         <button (click)="deleteClass()">Remove this Class from Syllabus</button>

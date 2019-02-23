@@ -15,6 +15,7 @@ export class StudentComponent implements OnInit {
   student_error_message: string;
   student:any;
   UrlsforClasses:[];
+  updatedStudent;
   class_names:Array<string>;
   student_class_list:Object[];
   classes_error_message:string;
@@ -128,6 +129,7 @@ export class StudentComponent implements OnInit {
     //1: Update Student  Data
     //2: PUT updated_student to API
     //3: Fetch and reload updated_student data to component class and UI
+    console.log("Updated Student: ", this.student.first_name);
   }
 
   deleteStudent(){
@@ -143,6 +145,8 @@ export class StudentComponent implements OnInit {
       () => {}
     )
   }
+
+
 
   goToStudentsHomePage(): void{
     this.router.navigate(['/students']);
