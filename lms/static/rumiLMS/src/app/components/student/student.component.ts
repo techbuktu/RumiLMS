@@ -93,7 +93,10 @@ export class StudentComponent implements OnInit {
         console.log("Class URLs are: ", this.UrlsforClasses);
         this.getClassesforStudent();
       },
-      err => {},
+      err => {
+        this.student_error_message = "This student does not exist. Redirecting ...";
+        this.router.navigate(['/students']);
+      },
       () => { }
 
     )

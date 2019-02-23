@@ -2,7 +2,10 @@
   {{ student.first_name|uppercase }} {{ student.last_name }}
 </h3>
 
+<p *ngIf="student_error_message">
+  {{ student_error_message }}
 
+</p>
 
 <div *ngIf="UrlsforClasses">
     <h4>

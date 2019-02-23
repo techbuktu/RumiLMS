@@ -36,9 +36,7 @@ export class ClassComponent implements OnInit {
       params => {
         this.classUrl = params.classUrl;
       },
-      err => {
-        this.router.navigate(['/classes']);
-      }
+      err => { }
     )
    }
 
@@ -64,6 +62,7 @@ export class ClassComponent implements OnInit {
       },
       err => {
         this.get_class_error_message = "Sorry, this class does not exist. Please, check and try again.";
+        this.router.navigate(['/classes']);
       },
       () => {}
     )
