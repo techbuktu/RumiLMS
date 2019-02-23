@@ -24,15 +24,25 @@
 <button (click)="gotoClassesHomePage()">
     All Classes
 </button>
+<button *ngIf="student" (click)="openUpdateForm()">
+  Update Class Details
+</button>
 
-<a *ngIf="student" href="#update-class">Update Class Details</a>
-<div>
-  <form (ngSubmit)="updateClass()">
-    <label>Name:
-        <input type="text" [name]="class_data.name" > {{ class_data.name }}
-
-    </label>
+<div *ngIf="show_update_form">
+<h4> Update Class Details </h4>
+  <form [formGroup]="updateClassForm" (ngSubmit)="updateClassDetails()">
     
+    <label>
+      Class Name: 
+      <input type="text" formControlName="name" placeholder="Name of the class. E.g. Biology">
+    </label>
+
+    <label>
+      Class Description:
+      <textarea cols="30" rows="10" formControlName="desc" placeholder="Enter description about the subject matter coverage of this class."> </textarea>
+    </label>
+
+    <input type="submit" name="submit" value="Update Class Details" [disabled]="!updateClassForm.dirty">
   </form>
 </div>
 
@@ -43,4 +53,15 @@
   <p *ngIf="class_delete_error_message">
     {{ class_delete_error_message }}
   </p>      
+</div>
+
+<div *ngIf="form_is_submitted">
+
+    <p *ngIf="class_update_success_message">
+      {{ class_update_success_message}}
+    </p>
+    <p *ngIf="class_update_error_message">
+      {{ class_update_error_message }}
+
+    </p>
 </div>
