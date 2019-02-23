@@ -11,7 +11,7 @@ export class ClassListComponent implements OnInit {
 
   constructor(private router: Router, private classService:ClassApiService) { }
 
-  class_list: Object[] = [];
+  class_list: any = [];
   class_api_error_message:string;
   class_deletion_success_message:string;
 
