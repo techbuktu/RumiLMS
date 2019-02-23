@@ -28,7 +28,7 @@ export class StudentApiService {
   }
 
   updateStudent(student_url:string, updated_student_data:any){
-    return this.Http.put(this.ApiUrl + student_url, updated_student_data);
+    return this.Http.put(this.ApiUrl + student_url + '/', updated_student_data);
   }
 
   deleteStudent(student_url:string){

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentApiService } from '../../services/student/student-api.service';
 import { ClassApiService } from '../../services/class/class-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 
 
 @Component({
@@ -15,20 +16,29 @@ export class StudentComponent implements OnInit {
   student_error_message: string;
   student:any;
   UrlsforClasses:[];
-  updatedStudent;
   class_names:Array<string>;
   student_class_list:Object[];
   classes_error_message:string;
   student_delete_error_message: string;
   student_delete_success_message: string;
   class_data:any;
+
+  updateStudentForm: FormGroup;
+  updatedStudent;
+  show_update_form: boolean = false;
+  form_is_submitted:boolean = false;
+  student_update_api_successful: boolean = false;
+  student_update_success_message: string;
+  student_update_error_message: string;
+
+
   constructor(private studentService:StudentApiService, private classService: ClassApiService, private router:Router, private route: ActivatedRoute) { 
     this.route.params.subscribe(
       params => {
         this.studentUrl = params.studentUrl;
       },
       err => {
-        this.student_error_message = "This Student does not exist."
+        this.student_error_message = "This Student does not exist.";
       },
       () => {}
     )
@@ -37,7 +47,12 @@ export class StudentComponent implements OnInit {
   ngOnInit() {
     this.getStudentData();
     this.getTestClass();
-    //this.getClassesforStudent();
+
+    //Initialize the updateStudentForm 
+   this.updateStudentForm = new FormGroup({
+    first_name : new FormControl(''),
+    last_name : new FormControl(''),
+   });
 
   }
 
@@ -125,9 +140,60 @@ export class StudentComponent implements OnInit {
     )
   }
 
+  openUpdateForm(){
+    this.show_update_form = true;
+    this.router.navigate(['/students', this.studentUrl]);
+  }
+
   updateStudent(){
+    this.form_is_submitted = true;
+
+    let first_name: string;
+    let last_name: string;
+
     //1: Update Student  Data
+    if (this.updateStudentForm.controls.first_name.dirty) {
+      //this.updatedStudent.first_name = this.updateStudentForm.controls.first_name.value
+      first_name = this.updateStudentForm.controls.first_name.value;
+    }
+    else {
+      //this.updatedStudent.first_name = this.student.first_name
+      first_name = this.student.first_name;
+    }
+    if (this.updateStudentForm.controls.last_name.dirty) {
+      //this.updatedStudent.last_name = this.updateStudentForm.controls.last_name.value
+      last_name = this.updateStudentForm.controls.last_name.value;
+    }
+    else{
+      //this.updatedStudent.last_name = this.student.last_name
+      last_name = this.student.last_name;
+    }
+
+    // Populate an Object with the updated student data: this.updatedStudent
+    this.updatedStudent = {
+      first_name: first_name,
+      last_name: last_name,
+      link: this.student.link,
+      classes: this.student.classes
+    };
+    console.log("this.updatedStudent ", this.updatedStudent); 
     //2: PUT updated_student to API
+    this.studentService.updateStudent(this.studentUrl, JSON.stringify(this.updatedStudent))
+    .subscribe(
+      res => {
+        this.student_update_api_successful = true;
+        this.student_update_success_message = "You have successfully-updated ", this.student.first_name + "'s info.";
+
+      },
+      err => {
+        console.log("API ERROR MSG: ", err);
+        this.student_update_error_message = "Sorry, this student's info could not be updated. Please, try again later.";
+
+      },
+      () => {
+        console.log("studentService.updateStudent() done running.");
+      }
+    )
     //3: Fetch and reload updated_student data to component class and UI
     console.log("Updated Student: ", this.student.first_name);
   }
@@ -145,8 +211,6 @@ export class StudentComponent implements OnInit {
       () => {}
     )
   }
-
-
 
   goToStudentsHomePage(): void{
     this.router.navigate(['/students']);

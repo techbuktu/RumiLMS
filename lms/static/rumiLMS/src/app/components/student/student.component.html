@@ -30,22 +30,47 @@
   <a [routerLink]="['/classes', class_data.link]">More About this Class</a>.
 </div>
 
-<a *ngIf="student" href="#update-student">Update Student Info</a>
-<div id="update-student">
-  <form (submit)="updateStudent()">
-    <label>First Name
-        <input type="text" [name]="student.first_name" > {{ student.first_name }}
-
-    </label>
-    
-    <input type="submit" value="Update Student Info">
-  </form>
-</div>
-
 <button (click)="goToStudentsHomePage()">
   Students Home
 </button>
 
 <p *ngIf="student">
   <button on-click="deleteStudent()">Delete this Student</button>
+
+  <button (click)="openUpdateForm()">
+      Update this Student's Info
+  </button>
 </p>
+
+<div *ngIf="show_update_form">
+    <form [formGroup]="updateStudentForm" (ngSubmit)="updateStudent()">
+    
+     <label>
+       First Name: 
+       <input type="text" formControlName="first_name">
+     </label>
+   
+     <label>
+       Last Name: 
+       <input type="text" formControlName="last_name">
+     </label>
+   
+     <input type="submit" value="Update Student's Info" [disabled]="!updateStudentForm.dirty">
+   
+    </form>
+   </div>
+
+
+<div *ngIf="form_is_submitted">
+    <b> First Name:</b> {{ updateStudentForm.controls.first_name.value }}
+  
+    <b> Last Name:</b> {{ updateStudentForm.controls.last_name.value }}
+
+    <p *ngIf="student_update_success_message">
+      {{ student_update_success_message}}
+    </p>
+    <p *ngIf="student_update_error_message">
+      {{ student_update_error_message }}
+
+    </p>
+</div>
