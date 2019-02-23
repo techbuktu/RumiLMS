@@ -4,7 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './modules/routing/app-routing.module';
 import { HttpInterceptorsModule } from './modules/http-interceptors/http-interceptors.module';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './modules/material/material.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -18,7 +19,8 @@ import { StudentApiService } from './services/student/student-api.service';
 import { ClassApiService } from './services/class/class-api.service';
 import { NewStudentComponent } from './components/new-student/new-student.component';
 import { NewClassComponent } from './components/new-class/new-class.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RumiNavComponent } from './modules/material/schematics/rumi-nav/rumi-nav.component';
+
 
 //import { HttpInterceptorProviders } from './modules/http-interceptors/index';
 
@@ -31,7 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ClassListComponent,
     ClassComponent,
     NewStudentComponent,
-    NewClassComponent
+    NewClassComponent,
+    RumiNavComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     HttpInterceptorsModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     //HttpInterceptorProviders,
