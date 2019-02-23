@@ -18,6 +18,7 @@ import { StudentApiService } from './services/student/student-api.service';
 import { ClassApiService } from './services/class/class-api.service';
 import { NewStudentComponent } from './components/new-student/new-student.component';
 import { NewClassComponent } from './components/new-class/new-class.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //import { HttpInterceptorProviders } from './modules/http-interceptors/index';
 
@@ -38,7 +39,8 @@ import { NewClassComponent } from './components/new-class/new-class.component';
     HttpClientModule,
     ReactiveFormsModule,
     HttpInterceptorsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     //HttpInterceptorProviders,
