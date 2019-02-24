@@ -21,7 +21,6 @@ import { NewStudentComponent } from './components/new-student/new-student.compon
 import { NewClassComponent } from './components/new-class/new-class.component';
 //Import Angular Material-based UI components
 import { RumiNavComponent } from './modules/material/schematics/rumi-nav/rumi-nav.component';
-import { StudentsDashboardComponent } from './modules/material/schematics/students-dashboard/students-dashboard.component';
 import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 
@@ -39,7 +38,6 @@ import { LayoutModule } from '@angular/cdk/layout';
     NewStudentComponent,
     NewClassComponent,
     RumiNavComponent,
-    StudentsDashboardComponent
   ],
   imports: [
     BrowserModule,
