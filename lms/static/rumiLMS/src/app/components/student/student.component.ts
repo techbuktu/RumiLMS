@@ -46,7 +46,6 @@ export class StudentComponent implements OnInit {
 
   ngOnInit() {
     this.getStudentData();
-    this.getTestClass();
 
     //Initialize the updateStudentForm 
    this.updateStudentForm = new FormGroup({
@@ -54,16 +53,6 @@ export class StudentComponent implements OnInit {
     last_name : new FormControl(''),
    });
 
-  }
-
-  getTestClass(){
-    return this.classService.getClassbyFullUrl("http://localhost:8000/api/classes/anatomy/").subscribe(
-      data => {
-        console.log("Test Class: ", data);
-        this.student_class_list.push(data);
-        console.log("Class List in getTestClass(): ", this.student_class_list);
-      }
-    )
   }
 
   getClassNames(){
