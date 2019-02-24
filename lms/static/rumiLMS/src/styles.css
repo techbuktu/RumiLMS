@@ -3,3 +3,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.page_container {
+    margin: 3% auto 2%;
+}
+
+.update_form {
+    width: 80%;
+    margin: 5% auto 5%;
+}

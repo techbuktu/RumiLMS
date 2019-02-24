@@ -19,7 +19,11 @@ import { StudentApiService } from './services/student/student-api.service';
 import { ClassApiService } from './services/class/class-api.service';
 import { NewStudentComponent } from './components/new-student/new-student.component';
 import { NewClassComponent } from './components/new-class/new-class.component';
+//Import Angular Material-based UI components
 import { RumiNavComponent } from './modules/material/schematics/rumi-nav/rumi-nav.component';
+import { StudentsDashboardComponent } from './modules/material/schematics/students-dashboard/students-dashboard.component';
+import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 //import { HttpInterceptorProviders } from './modules/http-interceptors/index';
@@ -34,7 +38,8 @@ import { RumiNavComponent } from './modules/material/schematics/rumi-nav/rumi-na
     ClassComponent,
     NewStudentComponent,
     NewClassComponent,
-    RumiNavComponent
+    RumiNavComponent,
+    StudentsDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,13 @@ import { RumiNavComponent } from './modules/material/schematics/rumi-nav/rumi-na
     HttpInterceptorsModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule
   ],
   providers: [
     //HttpInterceptorProviders,

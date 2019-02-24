@@ -1,4 +1,4 @@
-<h3>
+<!--h3>
   {{ student.first_name|uppercase }} {{ student.last_name }}
 </h3>
 
@@ -11,7 +11,7 @@
     <h4>
         Classes Enrolled In this Semester
     </h4>
-    <!-->button (click)="getClassesforStudent()">Show Classes Data</button-->
+    <button (click)="getClassesforStudent()">Show Classes Data</button>
   <ul *ngIf="student_class_list">
       <li *ngFor="let class of student_class_list">
         <a [routerLink]="['/classes', class.link]">
@@ -19,44 +19,65 @@
         </a>
       </li>
   </ul>
-</div>
+</div-->
 
 
-<div *ngIf="class_data">
-  <h4>
-    {{ class_data.name }}
-  </h4>
-  <p>
-    {{ class_data.desc }}
-  </p>
+<p *ngIf="student">
+    <button on-click="deleteStudent()">Delete this Student</button>
+  
+    <button (click)="openUpdateForm()">
+        Update this Student's Info
+    </button>
+</p>
 
-  <a [routerLink]="['/classes', class_data.link]">More About this Class</a>.
-</div>
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title> {{ student.first_name }}</mat-card-title>
+      <mat-card-subtitle> {{ student.last_name}}  </mat-card-subtitle>
+    </mat-card-header>
+    <!---img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"-->
+    <mat-card-content>
+      <h4>
+        Classes Currently Enrolled In
+      </h4>
+      <ul>
+          <li *ngFor="let class of student_class_list">
+            <a [routerLink]="['/classes', class.link]">
+              {{ class.name }}
+            </a>
+            <button (click)="deleteClass()">X</button>
+          </li>
+        </ul>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="openUpdateForm()">Update Student</button>
+      <button mat-button (click)="deleteStudent(student)">Delete Student</button>
+    </mat-card-actions>
+  </mat-card>
+
 
 <button (click)="goToStudentsHomePage()">
   Students Home
 </button>
 
-<p *ngIf="student">
-  <button on-click="deleteStudent()">Delete this Student</button>
 
-  <button (click)="openUpdateForm()">
-      Update this Student's Info
-  </button>
-</p>
-
-<div *ngIf="show_update_form">
+<div *ngIf="show_update_form" class="update_form">
     <form [formGroup]="updateStudentForm" (ngSubmit)="updateStudent()">
     
-     <label>
-       First Name: 
-       <input type="text" formControlName="first_name">
-     </label>
+    <p>
+        <label>
+            First Name: 
+            <input type="text" formControlName="first_name">
+        </label>
+    </p>
    
-     <label>
-       Last Name: 
-       <input type="text" formControlName="last_name">
-     </label>
+    <p>
+        <label>
+            Last Name: 
+            <input type="text" formControlName="last_name">
+          </label>
+    </p>
    
      <input type="submit" value="Update Student's Info" [disabled]="!updateStudentForm.dirty">
    
