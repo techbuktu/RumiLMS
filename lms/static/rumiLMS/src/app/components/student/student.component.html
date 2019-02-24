@@ -1,34 +1,6 @@
-<!--h3>
-  {{ student.first_name|uppercase }} {{ student.last_name }}
-</h3>
-
-<p *ngIf="student_error_message">
-  {{ student_error_message }}
-
-</p>
-
-<div *ngIf="UrlsforClasses">
-    <h4>
-        Classes Enrolled In this Semester
-    </h4>
-    <button (click)="getClassesforStudent()">Show Classes Data</button>
-  <ul *ngIf="student_class_list">
-      <li *ngFor="let class of student_class_list">
-        <a [routerLink]="['/classes', class.link]">
-            {{ class.name }}
-        </a>
-      </li>
-  </ul>
-</div-->
-
-
-<p *ngIf="student">
-    <button on-click="deleteStudent()">Delete this Student</button>
-  
-    <button (click)="openUpdateForm()">
-        Update this Student's Info
-    </button>
-</p>
+<button (click)="goToStudentsHomePage()">
+    Students Home
+</button>
 
 <mat-card class="example-card">
     <mat-card-header>
@@ -51,15 +23,10 @@
         </ul>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button (click)="openUpdateForm()">Update Student</button>
+      <button mat-button (click)="openUpdateForm()" *ngIf="!show_update_form">Update Student</button>
       <button mat-button (click)="deleteStudent(student)">Delete Student</button>
     </mat-card-actions>
   </mat-card>
-
-
-<button (click)="goToStudentsHomePage()">
-  Students Home
-</button>
 
 
 <div *ngIf="show_update_form" class="update_form">
