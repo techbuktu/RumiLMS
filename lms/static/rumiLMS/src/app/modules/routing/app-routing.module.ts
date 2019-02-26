@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 
 //Import all components from /app/components for use in routing requests
 import { HomeComponent } from '../../components/home/home.component';
@@ -47,6 +46,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppRoutingModule { }

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './modules/routing/app-routing.module';
@@ -41,6 +42,7 @@ import { LayoutModule } from '@angular/cdk/layout';
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -60,6 +62,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     StudentApiService,
     ClassApiService
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

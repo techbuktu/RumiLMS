@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { StudentComponent } from './student.component';
 import { StudentApiService } from '../../services/student/student-api.service';
 
@@ -12,7 +12,8 @@ describe('StudentComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ StudentComponent ],
-      providers: [StudentApiService]
+      providers: [StudentApiService],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));
