@@ -32,7 +32,7 @@ export class StudentComponent implements OnInit {
   student_update_error_message: string;
 
 
-  constructor(private studentService:StudentApiService, private classService: ClassApiService, private router:Router, private route: ActivatedRoute) { 
+  constructor(public studentService:StudentApiService, public classService: ClassApiService, private router:Router, private route: ActivatedRoute) { 
     this.route.params.subscribe(
       params => {
         this.studentUrl = params.studentUrl;
@@ -60,7 +60,7 @@ export class StudentComponent implements OnInit {
     let url_parts: any;
     let class_name:string;
     let urlString:string;
-
+    
     this.UrlsforClasses.forEach(url => {
       urlString = url;
       url_parts = urlString.split('/');
