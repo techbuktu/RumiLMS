@@ -5,13 +5,17 @@ import { ClassComponent } from './class.component';
 //import { HttpClient, HttpHandler } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ClassApiService } from '../../services/class/class-api.service';
-import { ReactiveFormsModule, FormBuilder, FormControl } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 describe('ClassComponent', () => {
   let component: ClassComponent;
   let fixture: ComponentFixture<ClassComponent>;
   const formBuilder: FormBuilder = new FormBuilder;
-  let updateClassForm;
+  const formGroup: FormGroup = new FormGroup;
+  let updateClassForm = new FormGroup({
+    name: new FormControl(''),
+    desc: new FormControl(''),
+  });
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -20,7 +24,9 @@ describe('ClassComponent', () => {
       providers: [ ClassApiService,
         // Add the FormBuilder to enable dynamic creation of Reactive Forms instances 
         // in this Test Suite 
-        { provide: FormBuilder, useValue: formBuilder}
+        { provide: FormBuilder, useValue: formBuilder},
+        FormGroup
+        //{ provide: FormGroup, usevalue: formGroup}
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
@@ -31,10 +37,7 @@ describe('ClassComponent', () => {
     fixture = TestBed.createComponent(ClassComponent);
     component = fixture.componentInstance;
     //Create and pass in the updateClassForm dynamically 
-    component.updateClassForm = formBuilder.group({
-      name: new FormControl(''),
-      desc: new FormControl('')
-    });
+    component.updateClassForm = updateClassForm;
 
     fixture.detectChanges();
   });

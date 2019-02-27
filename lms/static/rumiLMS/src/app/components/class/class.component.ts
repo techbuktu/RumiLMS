@@ -29,8 +29,6 @@ export class ClassComponent implements OnInit {
   class_update_error_message:string;
 
 
-
-
   constructor(private classService:ClassApiService, private studentService:StudentApiService, private router: Router, private route:ActivatedRoute) {
     this.route.params.subscribe(
       params => {

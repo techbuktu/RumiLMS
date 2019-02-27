@@ -4,14 +4,14 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { StudentComponent } from './student.component';
 import { StudentApiService } from '../../services/student/student-api.service';
-import { ReactiveFormsModule, FormBuilder, FormControl } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 
 describe('StudentComponent', () => {
   let component: StudentComponent;
   let fixture: ComponentFixture<StudentComponent>;
   const formBuilder: FormBuilder = new FormBuilder;
-  let updatedStudentForm;
+  updateStudentForm: FormGroup;
   //let studentService = component.studentService;
   //let classService = component.classService;
 
@@ -34,10 +34,10 @@ describe('StudentComponent', () => {
     component = fixture.componentInstance;
 
     // Instantiate and pass in a dynamic form to test with
-    component.updateStudentForm = formBuilder.group({
+    component.updateStudentForm = new FormGroup({
       first_name : new FormControl(''),
       last_name : new FormControl(''),
-    });
+     });
 
     fixture.detectChanges();
   });
