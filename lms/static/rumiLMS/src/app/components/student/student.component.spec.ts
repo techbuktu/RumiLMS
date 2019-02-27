@@ -1,9 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { StudentComponent } from './student.component';
 import { StudentApiService } from '../../services/student/student-api.service';
-import { FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup } from '@angular/forms';
 
 describe('StudentComponent', () => {
   let component: StudentComponent;
@@ -14,7 +15,7 @@ describe('StudentComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ StudentComponent ],
-      imports: [ RouterTestingModule ],
+      imports: [ RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule],
       providers: [StudentApiService, FormGroup],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })

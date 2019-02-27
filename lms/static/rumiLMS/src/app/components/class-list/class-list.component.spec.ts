@@ -2,7 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ClassListComponent } from './class-list.component';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ClassApiService } from '../../services/class/class-api.service';
+
 
 describe('ClassListComponent', () => {
   let component: ClassListComponent;
@@ -11,8 +14,8 @@ describe('ClassListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ClassListComponent ],
-      imports: [RouterTestingModule],
-      providers: [ClassApiService],
+      imports: [RouterTestingModule, HttpClientTestingModule],
+      providers: [HttpClient, ClassApiService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
