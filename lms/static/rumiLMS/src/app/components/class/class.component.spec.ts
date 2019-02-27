@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ClassComponent } from './class.component';
+import { ClassApiService } from '../../services/class/class-api.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 describe('ClassComponent', () => {
   let component: ClassComponent;
@@ -11,6 +13,7 @@ describe('ClassComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ClassComponent ],
       imports: [RouterTestingModule],
+      providers: [ ClassApiService, FormGroup, FormControl],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();

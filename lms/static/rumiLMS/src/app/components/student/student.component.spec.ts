@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { StudentComponent } from './student.component';
 import { StudentApiService } from '../../services/student/student-api.service';
+import { FormGroup } from '@angular/forms';
 
 describe('StudentComponent', () => {
   let component: StudentComponent;
@@ -14,7 +15,7 @@ describe('StudentComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ StudentComponent ],
       imports: [ RouterTestingModule ],
-      providers: [StudentApiService],
+      providers: [StudentApiService, FormGroup],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
