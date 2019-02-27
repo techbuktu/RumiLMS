@@ -7,7 +7,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ClassApiService } from '../../services/class/class-api.service';
 import { ReactiveFormsModule, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
-describe('ClassComponent', () => {
+xdescribe('ClassComponent', () => {
   let component: ClassComponent;
   let fixture: ComponentFixture<ClassComponent>;
   const formBuilder: FormBuilder = new FormBuilder;
