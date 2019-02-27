@@ -5,7 +5,6 @@ import { ClassComponent } from './class.component';
 //import { HttpClient, HttpHandler } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ClassApiService } from '../../services/class/class-api.service';
-
 import { ReactiveFormsModule, FormBuilder, FormControl } from '@angular/forms';
 
 describe('ClassComponent', () => {
