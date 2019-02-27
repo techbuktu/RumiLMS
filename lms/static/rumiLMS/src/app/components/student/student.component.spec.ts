@@ -4,11 +4,14 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { StudentComponent } from './student.component';
 import { StudentApiService } from '../../services/student/student-api.service';
-import { ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormControl } from '@angular/forms';
+
 
 describe('StudentComponent', () => {
   let component: StudentComponent;
   let fixture: ComponentFixture<StudentComponent>;
+  const formBuilder: FormBuilder = new FormBuilder;
+  let updatedStudentForm;
   //let studentService = component.studentService;
   //let classService = component.classService;
 
@@ -16,7 +19,11 @@ describe('StudentComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ StudentComponent ],
       imports: [ RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule],
-      providers: [StudentApiService, FormGroup],
+      providers: [StudentApiService, 
+        {
+          provide: FormBuilder, useValue: formBuilder
+        }
+      ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
@@ -25,6 +32,13 @@ describe('StudentComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(StudentComponent);
     component = fixture.componentInstance;
+
+    // Instantiate and pass in a dynamic form to test with
+    component.updateStudentForm = formBuilder.group({
+      first_name : new FormControl(''),
+      last_name : new FormControl(''),
+    });
+
     fixture.detectChanges();
   });
 

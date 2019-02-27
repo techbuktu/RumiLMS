@@ -11,6 +11,7 @@ describe('NewClassComponent', () => {
   let component: NewClassComponent;
   let fixture: ComponentFixture<NewClassComponent>;
   let formBuilder: FormBuilder = new FormBuilder;
+  let newClassForm: FormBuilder;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

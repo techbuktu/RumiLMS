@@ -10,8 +10,8 @@ import { ReactiveFormsModule, FormBuilder, FormControl } from '@angular/forms';
 describe('ClassComponent', () => {
   let component: ClassComponent;
   let fixture: ComponentFixture<ClassComponent>;
-
-  let formBuilder: FormBuilder = new FormBuilder;
+  const formBuilder: FormBuilder = new FormBuilder;
+  let updateClassForm;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
