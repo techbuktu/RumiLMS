@@ -59,7 +59,15 @@ describe('NewClassComponent', () => {
     expect(component.newClassForm).toBeDefined();
   });
 
-  it('should have form_is_valid set to false initially', () => {
+  it('should have the API-related variables properly initialized', () => {
+    expect(component.api_post_fail_message).toEqual("");
+    expect(component.api_post_successful).toBeFalsy();
+  });
+
+  it('should initialize the form-related variables', () => {
+    expect(component.is_submitted).toBeFalsy();
     expect(component.form_is_valid).toBe(false);
   });
 });
+
+
