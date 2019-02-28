@@ -11,27 +11,30 @@
   <form [formGroup]="newClassForm" (ngSubmit)="onSubmit()">
     <h5 *ngIf="form_is_valid"> Your form data is valid</h5>
 
-  <label>
-    Class Name: 
-    <input type="text" formControlName="name">
-    <div *ngIf="is_submitted && newClassForm.controls.name.errors" class="form_error">
-      <div *ngIf="newClassForm.controls.name.errors.required">
-        The name of the class is required. Please, enter a name for this new class.
-      </div>
-    </div>
-  </label>
+  <div>
+      <label>
+          Class Name: 
+          <input type="text" formControlName="name">
+          <div *ngIf="is_submitted && newClassForm.controls.name.errors" class="form_error">
+            <div *ngIf="newClassForm.controls.name.errors.required">
+              The name of the class is required. Please, enter a name for this new class.
+            </div>
+          </div>
+        </label>
+  </div>
 
-  <label>
-    Class Description:
-    <textarea formControlName="desc" cols="30" rows="10"> </textarea>
-    <div *ngIf="is_submitted && newClassForm.controls.desc.errors" class="form_error">
-      <div *ngIf="newClassForm.controls.desc.errors.required">
-        Required. Please, add a description for this new class.
-      </div>
-
-    </div>
-  </label>
-
+  <div>
+      <label>
+        Class Description:
+        <textarea formControlName="desc" cols="30" rows="10"> </textarea>
+        <div *ngIf="is_submitted && newClassForm.controls.desc.errors" class="form_error">
+          <div *ngIf="newClassForm.controls.desc.errors.required">
+            Required. Please, add a description for this new class.
+          </div>
+    
+        </div>
+      </label>      
+  </div>
   <input type="submit" value="Create New Class" [disabled]="!newClassForm.valid">
   </form>
 

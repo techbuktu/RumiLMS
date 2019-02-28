@@ -172,7 +172,20 @@ describe('ClassApiService', () => {
   });
 
   it('can remove a class instance using its deleteClass() method', () =>{
+    let targetClassUrl = 'testronics';
 
+    apiService.deleteClass(targetClassUrl)
+    .subscribe(
+      res => {
+        expect(res).toBeNull();
+      }
+    );
+
+    const req = httpTestingController.expectOne(apiService.ApiUrl+targetClassUrl);
+
+    expect(req.request.method).toBe('DELETE');
+
+    req.flush("");
   });
 
   it('should be able to retrieve a class item using its Full API URL by calling its getClassByFullUrl()', () =>{
