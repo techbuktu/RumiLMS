@@ -20,6 +20,11 @@ describe('ClassApiService', () => {
     httpTestingController = TestBed.get(HttpTestingController);
   });
 
+  afterEach( () => {
+     //Check that there are no other Http API requests left
+     httpTestingController.verify();
+  });
+
   it('should be created', () => {
     //const service: ClassApiService = TestBed.get(ClassApiService);
     expect(apiService).toBeTruthy();
@@ -34,7 +39,7 @@ describe('ClassApiService', () => {
   });
 
   it('can perform getAllClasses()', () => {
-    const mock_class_list = [
+    const mockClassList = [
       {
         name: 'Anatomy',
         desc: 'A study of the human body.',
@@ -53,12 +58,15 @@ describe('ClassApiService', () => {
     ];
 
     //1. Make an API request for all classes
-    apiService.getAllClasses().subscribe(
-      res => expect(res).toEqual(mock_class_list);
-      const req = httpTestingController.expectOne(apiService.ApiUrl);
+    apiService.getAllClasses().subscribe(res => 
+      expect(res).toEqual(mockClassList);
     );
 
-      
+    const req = httpTestingController.expectOne(apiService.ApiUrl);
+
+    expect(req.request.method).toEqual('GET');
+    
+    req.flush(mockClassList);
 
   });
 
