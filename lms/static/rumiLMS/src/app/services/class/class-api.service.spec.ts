@@ -86,12 +86,14 @@ describe('ClassApiService', () => {
     apiService.getClassByUrl('astronomy').subscribe(
       res => {
         expect(res).toEqual(mockSingleClass);
+        expect(res.link).toEqual(mockSingleClass.link);
       }
     );
 
     const req = httpTestingController.expectOne(apiService.ApiUrl + 'astronomy');
 
     expect(req.request.method).toEqual('GET');
+
 
     req.flush(mockSingleClass);
 
@@ -117,6 +119,55 @@ describe('ClassApiService', () => {
   });
 
   it('can update the properties of a class using updateClass()', () => {
+
+    //1: First: Simulate creating a new class object 
+    //May have as well just simulated 'GETting' an existing class from the API
+    // Either one works for this purpose.
+    const originalClass = {
+      name: 'Original',
+      desc: 'This is the ORIGINAL state of this class.',
+      link: 'original',
+      students: []
+    };
+
+    //2: Check that the new Class has been succesfully-POSTed
+    apiService.addNewClass(originalClass).subscribe(
+      res => {
+        expect(res).toEqual(originalClass);
+      }
+    );
+
+    const post_req = httpTestingController.expectOne(apiService.ApiUrl);
+    expect(post_req.request.method).toEqual('POST');
+    post_req.flush(originalClass);
+
+    httpTestingController.verify();
+
+    //3: Now, update the originalClass using a PUT request to the API
+    // with the updated form of the Class
+
+    const updatedClass = {
+      name: 'Original',
+      desc: 'This is the UPDATED DESCRIPTION of this class.',
+      link: 'original',
+      students: [
+        'http://rumilms.com/api/students/muhammad-jalloh'
+      ]
+    };
+
+    apiService.updateClass(originalClass.link, updatedClass).subscribe(
+      res => {
+        expect(res).toBe(updatedClass);
+        expect(res.link).toMatch(originalClass.link);
+      }
+    );
+
+    const put_request = httpTestingController.expectOne(apiService.ApiUrl + updatedClass.link+'/');
+    expect(put_request.request.url.match(apiService.ApiUrl+'original/'));
+
+    expect(put_request.request.method).toEqual('PUT');
+
+    put_request.flush(updatedClass);
 
   });
 
