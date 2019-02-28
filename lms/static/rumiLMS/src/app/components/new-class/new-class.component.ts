@@ -16,7 +16,7 @@ export class NewClassComponent implements OnInit {
   is_submitted: boolean = false;
   api_post_successful:boolean =false;
   api_post_fail_message: string = "";
-  form_is_valid: boolean =false;
+  form_is_valid: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private router: Router, public classService: ClassApiService) { }
 

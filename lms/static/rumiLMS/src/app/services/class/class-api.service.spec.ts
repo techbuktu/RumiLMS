@@ -3,6 +3,10 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { ClassApiService } from './class-api.service';
 
 describe('ClassApiService', () => {
+
+  let classService: ClassApiService;
+  let httpTestingController: HttpTestingController;
+  
   beforeEach(() => TestBed.configureTestingModule({
     imports: [ HttpClientTestingModule ],
     providers: [ ClassApiService ]

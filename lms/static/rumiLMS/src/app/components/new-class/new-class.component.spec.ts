@@ -53,7 +53,6 @@ describe('NewClassComponent', () => {
   });
 
   it('should call #ngOnInit() once', () => {
-    //component.ngOnInit();
     expect(component.ngOnInit).toHaveBeenCalledTimes(1);
   });
 
@@ -81,14 +80,11 @@ describe('NewClassComponent', () => {
     });
     component.onSubmit();
     expect(component.onSubmit).toHaveBeenCalled();
-    //expect(component.is_submitted).toBeTruthy();
-    //expect(component.form_is_valid).toBe(true);
     component.newClassData = component.newClassForm.value;
     expect(component.newClassData).toBeDefined();
     expect(component.newClassForm.valid).toBe(true);
     component.createNewClass()
     expect(component.createNewClass).toHaveBeenCalled();
-    //component.classService = new ClassApiService;
     expect(component.classService).toBeTruthy();
     component.classService.addNewClass(component.newClassData);
     expect(component.classService.addNewClass).toHaveBeenCalledTimes(1);
