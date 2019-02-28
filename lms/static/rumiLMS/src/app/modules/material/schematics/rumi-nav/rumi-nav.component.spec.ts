@@ -21,7 +21,7 @@ describe('RumiNavComponent', () => {
     TestBed.configureTestingModule({
       declarations: [RumiNavComponent],
       imports: [
-        //RouterTestingModule, //Uncomment after other fixes are done
+        RouterTestingModule, 
         NoopAnimationsModule,
         LayoutModule,
         MatButtonModule,
