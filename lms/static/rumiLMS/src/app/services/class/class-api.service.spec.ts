@@ -73,6 +73,28 @@ describe('ClassApiService', () => {
   });
 
   it('can return a single class using getClassByUrl()', () => {
+    const mockSingleClass = {
+      name: 'Astronomy',
+      desc: 'This is about the study of the planetary bodies.',
+      link: 'astronomy',
+      students : [
+        'http://rumilms.com/api/students/muhammad-jalloh',
+        'http://rumilms.com/api/students/avia-weinstein'
+      ]
+    };
+
+    // Mock an API call to get a class by its 'link' attribute 
+    apiService.getClassbyUrl('astronomy').subscribe(
+      res => {
+        expect(res).toEqual(mockSingleClass);
+      }
+    );
+
+    const req = httpTestingController.expectOne(apiService.ApiUrl + 'astronomy');
+
+    expect(req.request.method).toEqual('GET');
+
+    req.flush(mockSingleClass);
 
   });
 
