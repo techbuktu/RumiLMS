@@ -29,6 +29,7 @@ describe('NewClassComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(NewClassComponent);
     component = fixture.componentInstance;
+    component.classService = new ClassApiService;
 
     // Create and pass in a dynamic FormBuilder-based Reactive Form 
     component.newClassForm = formBuilder.group({
@@ -39,6 +40,7 @@ describe('NewClassComponent', () => {
     spyOn(component, 'ngOnInit');
     spyOn(component, 'onSubmit');
     spyOn(component, 'createNewClass')
+    spyOn(component.classService, 'addNewClass');
     fixture.detectChanges();
   });
 
@@ -68,6 +70,30 @@ describe('NewClassComponent', () => {
     expect(component.is_submitted).toBeFalsy();
     expect(component.form_is_valid).toBe(false);
   });
+
+  it('should handle processing #newClassForm data', () => {
+    expect(component.is_submitted).toBeFalsy();
+    expect(component.newClassData).toBeFalsy();
+
+    component.newClassForm.setValue({
+      name: 'Testology', 
+      desc: 'This class is about TDD, BDD and other variant thereof. Hop on the Test-wagon! :)'
+    });
+    component.onSubmit();
+    expect(component.onSubmit).toHaveBeenCalled();
+    //expect(component.is_submitted).toBeTruthy();
+    //expect(component.form_is_valid).toBe(true);
+    component.newClassData = component.newClassForm.value;
+    expect(component.newClassData).toBeDefined();
+    expect(component.newClassForm.valid).toBe(true);
+    component.createNewClass()
+    expect(component.createNewClass).toHaveBeenCalled();
+    //component.classService = new ClassApiService;
+    expect(component.classService).toBeTruthy();
+    component.classService.addNewClass(component.newClassData);
+    expect(component.classService.addNewClass).toHaveBeenCalledTimes(1);
+  });
+
 });
 
 

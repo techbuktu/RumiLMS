@@ -18,7 +18,7 @@ export class NewClassComponent implements OnInit {
   api_post_fail_message: string = "";
   form_is_valid: boolean =false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private classService: ClassApiService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, public classService: ClassApiService) { }
 
   ngOnInit() {
     //Create a new Class object mapping it to the API Class object's fields 
