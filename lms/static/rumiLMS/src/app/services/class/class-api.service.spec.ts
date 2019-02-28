@@ -82,7 +82,6 @@ describe('ClassApiService', () => {
         'http://rumilms.com/api/students/avia-weinstein'
       ]
     };
-
     // Mock an API call to get a class by its 'link' attribute 
     apiService.getClassByUrl('astronomy').subscribe(
       res => {
@@ -99,7 +98,22 @@ describe('ClassApiService', () => {
   });
 
   it('can create a new class instance with its addNewClass()', () => {
+    const mockNewClass = {
+      name: 'Classical Poetry',
+      desc : 'This class explores the classic poetic works of Shakespeare, Umrul Qays and Rumi',
+      link: '',
+      students: []
+    };
 
+    apiService.addNewClass(JSON.stringify(mockNewClass))
+    .subscribe( res => {
+      expect(res).toEqual(mockNewClass);
+    });
+
+    const req = httpTestingController.expectOne(apiService.ApiUrl);
+    expect(req.request.method).toBe('POST');
+
+    req.flush(mockNewClass);
   });
 
   it('can update the properties of a class using updateClass()', () => {

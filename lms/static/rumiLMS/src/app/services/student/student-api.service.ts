@@ -19,7 +19,7 @@ export class StudentApiService {
     return this.Http.get(this.ApiUrl + student_url);
   }
 
-  getStudentbyFullUrl(full_url:string){
+  getStudentByFullUrl(full_url:string){
     return this.Http.get(full_url);
   }
   

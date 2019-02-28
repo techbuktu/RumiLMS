@@ -52,6 +52,7 @@ export class NewClassComponent implements OnInit {
     this.classService.addNewClass(this.newClassData)
     .subscribe(
       data => {
+        console.log("classService.addNewClass RESPONSE =>", data);
         this.api_post_successful = true;
         this.form_is_valid = true;
         this.router.navigate(['/classes']);

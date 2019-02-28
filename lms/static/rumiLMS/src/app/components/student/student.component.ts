@@ -92,7 +92,7 @@ export class StudentComponent implements OnInit {
   }
 
   getClassData(url){
-    this.classService.getClassbyFullUrl(url).subscribe(
+    this.classService.getClassByUrl(url).subscribe(
       data => {
         this.class_data = data;
       },
@@ -106,8 +106,8 @@ export class StudentComponent implements OnInit {
   getClassesforStudent(){
     const classes: any[] = [];
     return this.UrlsforClasses.forEach(url => {
-      //this.getClassByFullUrl(url);
-      this.classService.getClassbyFullUrl(url).subscribe(
+      //this.getClassByUrl(url);
+      this.classService.getClassByUrl(url).subscribe(
         data => {
           classes.push(data);
         console.log("Classes Data so far:", classes);
@@ -125,8 +125,8 @@ export class StudentComponent implements OnInit {
 
   
 
-  getClassByFullUrl(fullUrl){
-    this.classService.getClassbyFullUrl(fullUrl).subscribe(
+  getClassByUrl(fullUrl){
+    this.classService.getClassByUrl(fullUrl).subscribe(
       data => {
         this.student_class_list.push(data);
       },
