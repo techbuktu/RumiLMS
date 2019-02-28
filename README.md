@@ -7,17 +7,26 @@
 ## Installation and Setup 
 The RumiLMS backend is built with Python using the  [Django framework](https://docs.djangoproject.com).
 
+## Clone the Project
+From your terminal/commandline:
+`git clone` this repository into a directory of your choice on your local machine.
+
+
+## Setup the Virtualenv 
 To setup the backend properly:
 - Create a virtual environment thus:
 ```bash
 virtualenv -p python3 env 
 ```
 
-### Activate the Virtualenv 
-cd into the rumi_env directory (or whatever else you named yours)
+# Activate the Virtualenv
+```bash
+    source env/bin/activate
+```
 
 Install the Django-related packages in the requirements/common.txt file.
 
+## Install the Django Dependencies
 cd into the root `rumilms` dir (where you find the `manage.py` file) and run:
 
 ```bash 
@@ -28,28 +37,18 @@ Barring any hiccups, this should successfully install:
 
 - [`django`](https://djangoproject.com)
 
-- [`djangorestframework`](https://django-rest-framework.org) and 
+- [`djangorestframework`](https://django-rest-framework.org)   and 
 
-- [`django-cors-headers`] (https://github.com/ottoyiu/django-cors-headers/blob/master/README.rst)
+- [`django-cors-headers`](https://github.com/ottoyiu/django-cors-headers/blob/master/README.rst)
 
 The __django-cors-headers__ is needed to configure CORS since, during development at least, your (Angular) frontend app and the Django-based backend app will be running on different ports. So, essentially, they don't exist on the same website.
 
-For detailed setup of your backend, please see the detailed docs on: 
+For detailed instructions about the setup of the backend, please see the detailed docs on: 
 - [Django Framework](https://docs.djangoproject.com)
 - [django-rest-framework](https://django-rest-framework.org)
 - [Django CORS Headers](https://github.com/ottoyiu/django-cors-headers/blob/master/README.rst) 
 
-## Clone the Project
-From your terminal/commandline:
-`git clone` this repository into a directory of your choice on your local machine.
-
-## Install all Python/Django Dependencies
-- `cd` into the root `rumilms` directory (where you have the `manage.py` file)
-> Run:
-```bash     
-    pip install -r requirements/common.txt
- ```
-This should install all the Django dependencies for this project.
+## Start the Django Project
 
 To start the django app and load the live API:
 ```bash
@@ -60,7 +59,7 @@ To view the Django Admin Site (where you can add, update and delete Classes and 
 - Got to `localhost:8000/admin` and login 
 
 To see the live browsable API:
-* Go to `localhost:8000/api`
+* Go to `localhost:8000/api/`
 
 ## Running the Frontend Angular 7 App
 From the root `rumilms` directory, run:
