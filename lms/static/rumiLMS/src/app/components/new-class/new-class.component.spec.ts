@@ -92,6 +92,7 @@ describe('NewClassComponent', () => {
     expect(component.classService).toBeTruthy();
     component.classService.addNewClass(component.newClassData);
     expect(component.classService.addNewClass).toHaveBeenCalledTimes(1);
+    
   });
 
 });
