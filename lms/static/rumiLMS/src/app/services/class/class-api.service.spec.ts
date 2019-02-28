@@ -58,8 +58,10 @@ describe('ClassApiService', () => {
     ];
 
     //1. Make an API request for all classes
-    apiService.getAllClasses().subscribe(res => 
-      expect(res).toEqual(mockClassList);
+    apiService.getAllClasses().subscribe(
+      res => {
+        expect(res).toEqual(mockClassList);
+      }
     );
 
     const req = httpTestingController.expectOne(apiService.ApiUrl);
