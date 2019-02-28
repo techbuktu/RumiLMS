@@ -84,7 +84,7 @@ describe('ClassApiService', () => {
     };
 
     // Mock an API call to get a class by its 'link' attribute 
-    apiService.getClassbyUrl('astronomy').subscribe(
+    apiService.getClassByUrl('astronomy').subscribe(
       res => {
         expect(res).toEqual(mockSingleClass);
       }

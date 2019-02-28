@@ -13,11 +13,11 @@ export class ClassApiService {
     return this.Http.get(this.ApiUrl);
   }
 
-  getClassbyUrl(class_url){
+  getClassByUrl(class_url){
     return this.Http.get(this.ApiUrl + class_url);
   }
 
-  getClassbyFullUrl(full_url:string){
+  getClassByFullUrl(full_url:string){
     return this.Http.get(full_url);
   }
 

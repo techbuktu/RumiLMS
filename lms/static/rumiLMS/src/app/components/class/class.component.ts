@@ -50,7 +50,7 @@ export class ClassComponent implements OnInit {
   }
 
   getClassDetails(){
-    this.classService.getClassbyUrl(this.classUrl)
+    this.classService.getClassByUrl(this.classUrl)
     .subscribe(
       res => {
         this.class_data = res;
@@ -69,7 +69,7 @@ export class ClassComponent implements OnInit {
 getStudentsinClass(){
   const students: Object[] = [];
   this.UrlsforStudents.forEach(url => {
-    this.studentService.getStudentbyFullUrl(url).subscribe(
+    this.studentService.getStudentByFullUrl(url).subscribe(
       res => {
         students.push(res);
       },
