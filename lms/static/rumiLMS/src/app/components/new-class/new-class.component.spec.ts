@@ -7,7 +7,7 @@ import { ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
 
 import { ClassApiService } from '../../services/class/class-api.service';
 
-fdescribe('NewClassComponent', () => {
+describe('NewClassComponent', () => {
   let component: NewClassComponent;
   let fixture: ComponentFixture<NewClassComponent>;
   let formBuilder: FormBuilder = new FormBuilder;
@@ -53,5 +53,13 @@ fdescribe('NewClassComponent', () => {
   it('should call #ngOnInit() once', () => {
     //component.ngOnInit();
     expect(component.ngOnInit).toHaveBeenCalledTimes(1);
+  });
+
+  it('should have the #newClassForm instantianted upon NewClassComponent initialization', () => {
+    expect(component.newClassForm).toBeDefined();
+  });
+
+  it('should have form_is_valid set to false initially', () => {
+    expect(component.form_is_valid).toBe(false);
   });
 });

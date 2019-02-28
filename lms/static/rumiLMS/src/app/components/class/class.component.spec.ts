@@ -10,8 +10,8 @@ import { ReactiveFormsModule, FormBuilder, FormControl, FormGroup } from '@angul
 xdescribe('ClassComponent', () => {
   let component: ClassComponent;
   let fixture: ComponentFixture<ClassComponent>;
-  const formBuilder: FormBuilder = new FormBuilder;
-  const formGroup: FormGroup = new FormGroup;
+  let formBuilder: FormBuilder = new FormBuilder;
+  //let formGroup: FormGroup = new FormGroup;
   let updateClassForm = new FormGroup({
     name: new FormControl(''),
     desc: new FormControl(''),
@@ -25,8 +25,7 @@ xdescribe('ClassComponent', () => {
         // Add the FormBuilder to enable dynamic creation of Reactive Forms instances 
         // in this Test Suite 
         { provide: FormBuilder, useValue: formBuilder},
-        FormGroup
-        //{ provide: FormGroup, usevalue: formGroup}
+        //{ provide: FormGroup, useValue: formGroup}
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
