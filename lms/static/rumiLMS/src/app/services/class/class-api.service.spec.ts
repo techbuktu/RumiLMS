@@ -51,8 +51,8 @@ describe('ClassApiService', () => {
         desc: 'This is a study of living things on land, in the waters below and the air above and beyond the rainbow.',
         link: 'biology',
         students: [
-          'http://rumilms.com/api/students/avia-one',
-          'http://rumilsm.com/api/students/betty-two'
+          'http://localhost:8000/api/students/avia-one',
+          'http://localhost:8000/api/students/betty-two'
         ]
       }
     ];
@@ -78,8 +78,8 @@ describe('ClassApiService', () => {
       desc: 'This is about the study of the planetary bodies.',
       link: 'astronomy',
       students : [
-        'http://rumilms.com/api/students/muhammad-jalloh',
-        'http://rumilms.com/api/students/avia-weinstein'
+        'http://localhost:8000/api/students/muhammad-jalloh',
+        'http://localhost:8000/api/students/avia-weinstein'
       ]
     };
     // Mock an API call to get a class by its 'link' attribute 
@@ -151,7 +151,7 @@ describe('ClassApiService', () => {
       desc: 'This is the UPDATED DESCRIPTION of this class.',
       link: 'original',
       students: [
-        'http://rumilms.com/api/students/muhammad-jalloh'
+        'http://localhost:8000/api/students/muhammad-jalloh'
       ]
     };
 
@@ -172,6 +172,35 @@ describe('ClassApiService', () => {
   });
 
   it('can remove a class instance using its deleteClass() method', () =>{
+
+  });
+
+  it('should be able to retrieve a class item using its Full API URL by calling its getClassByFullUrl()', () =>{
+    const mockClassItem = {
+      name: 'Frontend Testing',
+      desc: 'This class covers the delicate art and science of TDD and BDD using Angular.',
+      link: 'frontend-testing',
+      students: [
+        'http://localhost:8000/api/students/muhammad-jalloh',
+        'http://localhost:8000/api/students/avia-weinstein'
+      ]
+    };
+
+    apiService.getClassByFullUrl('http://localhost:8000/api/classes/frontend-testing/')
+    .subscribe(
+      res => {
+        expect(res).toEqual(mockClassItem);
+      }
+    );
+
+    const req = httpTestingController.expectOne('http://localhost:8000/api/classes/frontend-testing/');
+
+    //Check that the resulting API Http Request method was a 'GET'
+    expect(req.request.method).toBe('GET');
+
+    // Provide the (test replacement) mockClassItem that should reflect what was on the server
+    // and sent back as a response in a live ClassApiService.getClassByFullUrl()
+    req.flush(mockClassItem);
 
   });
 
