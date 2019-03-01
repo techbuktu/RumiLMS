@@ -7,6 +7,8 @@
 ## Installation and Setup 
 The RumiLMS backend is built with Python using the  [Django framework](https://docs.djangoproject.com).
 
+The frontend is built on Angular 7 and Angular Material.
+
 ## Clone the Project
 From your terminal/commandline:
 `git clone` this repository into a directory of your choice on your local machine.
